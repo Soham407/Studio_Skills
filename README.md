@@ -1,6 +1,8 @@
 # Studio Skills Repository
 
-A comprehensive library of Claude skills, workflows, and frameworks organized by domain. Use the sync-script to distribute modules to your projects.
+A comprehensive library of 36+ Claude skills and workflows organized by domain. Use the sync-script to distribute modules to your projects.
+
+**Now includes:** All 17 Matt Pocock "Skills For Real Engineers" + 19 domain-specific studio skills.
 
 ## Quick Start
 
@@ -17,12 +19,60 @@ A comprehensive library of Claude skills, workflows, and frameworks organized by
 ```
 studio-skills/
 ├── .github/skills/      Core skill templates
-├── architecture/        System design, PRDs, schemas, frameworks
+├── architecture/        Engineering frameworks, processes, and design patterns
+│   ├── matt-pocock-*    Matt Pocock's "Skills for Real Engineers" (17 skills)
+│   ├── superpowers-framework/
+│   ├── context7-mcp/
+│   └── [other architecture skills]
 ├── coding/              Framework-specific patterns (Next.js, Expo, TypeScript)
 ├── business/            Agency ops, pitching, marketing, client workflows
 ├── design/              Design tokens, UI systems, accessibility
 └── sync-script.sh       Distribute skills to projects
 ```
+
+---
+
+## 🎯 Matt Pocock's "Skills For Real Engineers"
+
+All 17 skills from https://github.com/mattpocock/skills for disciplined, composable, adaptable engineering.
+
+### Engineering Skills (10)
+
+Disciplined diagnosis loops, test-driven development, and code architecture practices.
+
+| Skill | Purpose |
+|-------|---------|
+| **diagnose** | Disciplined diagnosis loop: reproduce → minimize → hypothesize → instrument → fix → regression-test |
+| **grill-with-docs** | Challenge your plan against domain model, sharpen terminology, update CONTEXT.md and ADRs inline |
+| **improve-codebase-architecture** | Find deepening opportunities informed by domain language and ADR decisions |
+| **prototype** | Build throwaway prototypes to flush out designs (terminal apps or UI variations) |
+| **setup-matt-pocock-skills** | Scaffold per-repo config (issue tracker, labels, domain doc layout) — run once per repo |
+| **tdd** | Test-driven development with red-green-refactor loops, one vertical slice at a time |
+| **to-issues** | Break plans, specs, and PRDs into independently-grabbable GitHub issues using vertical slices |
+| **to-prd** | Turn conversation context into a PRD and submit as GitHub issue |
+| **triage** | Triage issues through a state machine of triage roles |
+| **zoom-out** | Get broader context or higher-level perspective on unfamiliar code sections |
+
+### Productivity Skills (3)
+
+General workflow tools for all projects.
+
+| Skill | Purpose |
+|-------|---------|
+| **caveman** | Ultra-compressed communication mode (~75% fewer tokens) while keeping full technical accuracy |
+| **grill-me** | Get relentlessly interviewed about a plan or design until every decision tree branch is resolved |
+| **write-a-skill** | Create new skills with proper structure, progressive disclosure, and bundled resources |
+
+### Misc Skills (4)
+
+Specialized engineering tools.
+
+| Skill | Purpose |
+|-------|---------|
+| **git-guardrails-claude-code** | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, etc.) |
+| **migrate-to-shoehorn** | Migrate test files from `as` type assertions to `@total-typescript/shoehorn` |
+| **scaffold-exercises** | Create exercise directory structures with sections, problems, solutions, and explainers |
+| **setup-pre-commit** | Set up Husky pre-commit hooks with lint-staged, Prettier, type checking, and tests |
 
 ---
 
@@ -54,13 +104,13 @@ The foundational frameworks and patterns that define your studio's engineering a
 
 Enterprise-grade TypeScript, Next.js, and Expo patterns ensuring code quality and maintainability.
 
-| Skill | Purpose | Category | Source |
-|-------|---------|----------|--------|
-| **Matt Pocock TypeScript Architecture** | Advanced TypeScript patterns and type system mastery | coding | [mattpocock/skills](https://github.com/mattpocock/skills) |
-| **WatermelonDB Sync Architecture** | Offline-first React Native DB with conflict resolution and optimistic updates | coding | Custom Studio Skill (2026 WatermelonDB Docs) |
-| **Writing Standards** | Documentation and code comment best practices | architecture | [Anbeeld/WRITING.md](https://github.com/Anbeeld/WRITING.md) |
-| **Tech Debt Audit** | Identify, measure, and prioritize technical debt | architecture | [ksimback/tech-debt-skill](https://github.com/ksimback/tech-debt-skill) |
-| **Hue Design Tokens** | Tailwind and design token configuration system | design | [dominikmartn/hue](https://github.com/dominikmartn/hue) |
+| Skill | Purpose | Source |
+|-------|---------|--------|
+| **Matt Pocock TypeScript Architecture** | Advanced TypeScript patterns and type system mastery | [mattpocock/skills](https://github.com/mattpocock/skills) |
+| **WatermelonDB Sync Architecture** | Offline-first React Native DB with conflict resolution and optimistic updates | Custom Studio Skill (2026 WatermelonDB Docs) |
+| **Writing Standards** | Documentation and code comment best practices | [Anbeeld/WRITING.md](https://github.com/Anbeeld/WRITING.md) |
+| **Tech Debt Audit** | Identify, measure, and prioritize technical debt | [ksimback/tech-debt-skill](https://github.com/ksimback/tech-debt-skill) |
+| **Hue Design Tokens** | Tailwind and design token configuration system | [dominikmartn/hue](https://github.com/dominikmartn/hue) |
 
 ---
 
@@ -81,8 +131,8 @@ Client-facing tools for presentations, demos, lead generation, and outreach camp
 
 ### 1. Browse Skills by Category
 
-Each category folder contains detailed `README.md` files:
-- **architecture/** — System design, frameworks, audit tools
+Each category folder contains detailed README files:
+- **architecture/** — Matt Pocock skills + system design frameworks + audit tools
 - **coding/** — Language and framework-specific patterns
 - **business/** — Client workflows, operations, marketing
 - **design/** — Design systems, tokens, UI guidelines
@@ -97,46 +147,105 @@ Each category folder contains detailed `README.md` files:
 ./sync-script.sh --type expo --target ~/projects/mobile-app
 ```
 
-### 3. Create Your Own Skills
+### 3. Use Matt Pocock's Skills Immediately
 
-Use `.github/skills/SKILL_TEMPLATE.md` as a template for adding new skills:
+Once synced, you have access to all 17 skills:
 
 ```bash
-cp .github/skills/SKILL_TEMPLATE.md architecture/my-skill/SKILL.md
+# Grill mode - interview yourself about your design
+/grill-me
+
+# Test-driven development
+/tdd
+
+# Challenge your plan against domain model
+/grill-with-docs
+
+# Triage issues through a state machine
+/triage
+
+# And 13 more...
 ```
 
-### 4. Keep Everything in Sync
+### 4. Create Your Own Skills
+
+Use `.github/skills/SKILL_TEMPLATE.md` as a template for adding new skills.
+
+### 5. Keep Everything in Sync
 
 ```bash
 # Update all previously synced projects
 ./sync-script.sh --sync
 ```
 
-This pulls the latest version from each skill and distributes to all registered projects.
+---
+
+## Skill Totals
+
+```
+36+ Total Skills
+├── 26 Architecture Skills
+│   ├── 17 Matt Pocock "Skills For Real Engineers"
+│   ├── 9 Elite 10 core frameworks
+├── 2 Coding Skills (TypeScript + WatermelonDB)
+├── 1 Design Skill (tokens)
+└── 7 Business Skills (ops, pitching, marketing)
+
+Plus: 1 Custom Studio Skill (WatermelonDB)
+```
 
 ---
 
-## Skill Index by Category
+## Why This Repository
 
-### Architecture & System Design
+**Before:** Scattered skills across multiple repos, inconsistent setup, hard to discover what's available.
+
+**After:** One source of truth. Sync what you need. Stay aligned across all your projects.
+
+**Philosophy:** Based on Matt Pocock's "Skills for Real Engineers" — small, composable, adaptable skills that work with any model and respect your engineering fundamentals.
+
+---
+
+## Complete Skill Index
+
+### Matt Pocock Engineering Skills (17)
+- `architecture/matt-pocock-diagnose/` — Diagnosis loop
+- `architecture/matt-pocock-grill-with-docs/` — Challenge plan against domain
+- `architecture/matt-pocock-improve-codebase-architecture/` — Find deepening opportunities
+- `architecture/matt-pocock-prototype/` — Build throwaway prototypes
+- `architecture/matt-pocock-setup-matt-pocock-skills/` — Per-repo config scaffold
+- `architecture/matt-pocock-tdd/` — Red-green-refactor
+- `architecture/matt-pocock-to-issues/` — Break plans into issues
+- `architecture/matt-pocock-to-prd/` — Convert context to PRD
+- `architecture/matt-pocock-triage/` — Issue triage state machine
+- `architecture/matt-pocock-zoom-out/` — Broader context
+- `architecture/matt-pocock-caveman/` — Compressed communication
+- `architecture/matt-pocock-grill-me/` — Relentless interview
+- `architecture/matt-pocock-write-a-skill/` — Create new skills
+- `architecture/matt-pocock-git-guardrails-claude-code/` — Block dangerous git
+- `architecture/matt-pocock-migrate-to-shoehorn/` — Migrate type assertions
+- `architecture/matt-pocock-scaffold-exercises/` — Create exercise structures
+- `architecture/matt-pocock-setup-pre-commit/` — Husky + lint-staged setup
+
+### Other Architecture Skills (9)
 - `architecture/superpowers-framework/` — Framework orchestration
-- `architecture/context7-mcp/` — MCP and documentation integration
+- `architecture/context7-mcp/` — MCP and documentation
 - `architecture/awesome-claude-skills/` — Skill patterns reference
 - `architecture/manual-sdd/` — System design documents
-- `architecture/antivibe-logic/` — Logic and dependency patterns
+- `architecture/antivibe-logic/` — Logic patterns
 - `architecture/usage-limit-reducer/` — Token optimization
 - `architecture/agent-session-resume/` — Agent state management
 - `architecture/writing-standards/` — Documentation standards
 - `architecture/tech-debt-audit/` — Code quality assessment
 
-### Production Engineering (Coding)
+### Coding Skills (2)
 - `coding/matt-pocock-typescript/` — Advanced TypeScript
-- `coding/watermelon-sync/` — WatermelonDB offline-first architecture (custom skill)
+- `coding/watermelon-sync/` — WatermelonDB offline-first architecture
 
-### Design & UI
+### Design Skills (1)
 - `design/hue-design-tokens/` — Design token systems
 
-### Business & Operations
+### Business Skills (7)
 - `business/agentic-seo/` — SEO optimization
 - `business/founder-playbook/` — Leadership playbook
 - `business/shannon-security/` — Security audits
@@ -151,36 +260,18 @@ This pulls the latest version from each skill and distributes to all registered 
 
 ### Add a New Framework Type
 
-Edit `sync-script.sh` to add support for new project types:
-
-```bash
-case $project_type in
-  my-framework)
-    [ -d "$STUDIO_SKILLS_DIR/coding/my-framework" ] && cp -r "$STUDIO_SKILLS_DIR/coding/my-framework"/* "$target_dir/.claude/skills/" 
-    ;;
-esac
-```
+Edit `sync-script.sh` to support new project types like `django`, `rails`, etc.
 
 ### Create Framework-Specific Skills
 
-Create framework subfolders in `coding/`:
-
+Create subfolders in `coding/`:
 ```
 coding/
-├── nextjs/         → Next.js-specific skills
-├── expo/           → React Native/Expo skills
-├── typescript/     → TypeScript patterns
-└── react/          → React component patterns
+├── nextjs/
+├── expo/
+├── typescript/
+└── react/
 ```
-
----
-
-## Next Steps
-
-1. **Explore skills** by category — each has detailed README.md files
-2. **Sync to a project** — start using skills immediately
-3. **Contribute** — add your own skills following SKILL_TEMPLATE.md
-4. **Stay updated** — run `./sync-script.sh --sync` to refresh
 
 ---
 
@@ -188,13 +279,21 @@ coding/
 
 To add a new skill:
 
-1. Create a folder in the appropriate category (architecture/, coding/, business/, design/)
-2. Add your `SKILL.md` using `.github/skills/SKILL_TEMPLATE.md` as a reference
-3. Include a `README.md` explaining the skill
-4. Run `./sync-script.sh --sync` to distribute to all projects
+1. Create a folder in the appropriate category
+2. Add your `SKILL.md` using `.github/skills/SKILL_TEMPLATE.md`
+3. Include a `README.md`
+4. Run `./sync-script.sh --sync` to distribute
+
+---
+
+## References
+
+- **Matt Pocock Skills:** https://github.com/mattpocock/skills
+- **WatermelonDB:** https://watermelondb.dev
+- **Original repo sources:** See skill index above
 
 ---
 
 **Last Updated:** 2026-05-07  
-**Total Skills:** 19 (9 Architecture, 2 Coding, 1 Design, 7 Business)  
-**Custom Studio Skills:** 1 (WatermelonDB Sync)
+**Total Skills:** 36+ (26 Architecture, 2 Coding, 1 Design, 7 Business)  
+**Status:** All Matt Pocock skills + Custom studio extensions
