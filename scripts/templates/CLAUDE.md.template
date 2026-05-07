@@ -1,0 +1,125 @@
+# {{PROJECT_NAME}}
+
+Studio-Grade **{{PROJECT_TYPE}}** project bootstrapped via `kickstart`.
+
+---
+
+## Hardware & Runtime Context
+
+- **CPU/Memory:** Apple M5 Pro Silicon / 24GB Unified Memory
+- **Package Manager:** pnpm (content-addressable storage)
+- **Terminal:** Warp (block-compatible non-interactive outputs)
+- **Virtualization:** OrbStack (native Docker replacement)
+- **Local Inference:** Ollama serving Qwen 3.6 Coder 14B/32B
+
+## AI Model Routing (Soft Preference)
+
+> **Prefer local Ollama (Qwen 3.6 Coder 14B) for routine tasks** — file edits, simple refactors, lookups, and code formatting — to preserve the 24GB RAM headroom.
+>
+> **Use cloud Claude** for:
+> - Complex architectural decisions
+> - Multi-file refactors spanning 3+ modules
+> - Domain modeling and PRD synthesis
+> - When local model is unavailable or hits its context window
+>
+> When in doubt, start with the local model. Escalate to cloud only when needed.
+
+---
+
+## Stack Standards
+
+### Frontend
+- **Web:** Next.js 16 (App Router)
+- **Mobile:** Expo SDK 55
+- **Styling:** NativeWind v4 (Tailwind engine)
+- **Universal Logic:** Solito 5 (when applicable)
+
+### Backend & Data
+- **Cloud DB:** Supabase (PostgreSQL) — see `lib/supabase.ts`
+- **Offline-First Mobile:** WatermelonDB — see `model/`
+- **Auth:** Better-Auth (Passkey/FaceID-ready) — see `lib/auth.ts`
+
+### Quality Gates
+- **Pre-commit:** Husky + lint-staged + Shannon-Pro security audit
+- **Unit Tests:** Vitest (run: `pnpm test`)
+- **E2E Tests:** Playwright (run: `pnpm test:e2e`)
+- **Types:** strict TypeScript (run: `pnpm typecheck`)
+
+---
+
+## Skills Library
+
+This project ships with **35+ studio skills** at `.claude/skills/`:
+
+### `architecture/`
+Engineering frameworks and processes:
+- `matt-pocock-tdd/` — Red-green-refactor TDD loops
+- `matt-pocock-grill-with-docs/` — Challenge plan against domain model
+- `matt-pocock-diagnose/` — Disciplined debugging loop
+- `matt-pocock-improve-codebase-architecture/` — Find deepening opportunities
+- `matt-pocock-to-prd/`, `matt-pocock-to-issues/` — Plan → PRD → issues
+- `matt-pocock-triage/`, `matt-pocock-zoom-out/`, `matt-pocock-prototype/`
+- `superpowers-framework/` — Master framework
+- `context7-mcp/` — Live API documentation
+- `manual-sdd/` — System design documents
+- `tech-debt-audit/` — Technical debt assessment
+- (and more — explore the folder)
+
+### `coding/`
+Framework-specific patterns:
+- `matt-pocock-typescript/` — Advanced TypeScript
+- `watermelon-sync/` — WatermelonDB offline-first architecture
+
+### `business/`
+Studio operations:
+- `shannon-security/` — Security audit framework (used in pre-commit)
+- `agentic-seo/` — AI-driven SEO
+- `marp-pitching/`, `email-campaigns/`, `spider-king-lead-extraction/`
+
+### `design/`
+- `hue-design-tokens/` — Design tokens & Tailwind themes
+
+---
+
+## Quick Commands
+
+```bash
+# Development
+pnpm dev               # Start dev server
+pnpm test              # Vitest
+pnpm test:e2e          # Playwright
+pnpm typecheck         # TypeScript
+
+# Build & Deploy
+pnpm build
+```
+
+## Workflow Recommendations
+
+1. **Start with `/grill-me` or `/grill-with-docs`** before any major feature — align on intent before coding.
+2. **Use `/tdd`** for red-green-refactor when implementing logic.
+3. **Run `/diagnose`** when hitting hard bugs.
+4. **Use `/to-prd` then `/to-issues`** to break work into vertical slices.
+5. **Run `/improve-codebase-architecture`** every few days to prevent ball-of-mud.
+
+---
+
+## Configuration Required Post-Setup
+
+Before running `pnpm dev`, configure:
+
+1. **Supabase** — Add keys to `.env.local`:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=...
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+   ```
+   *(For mobile: prefix with `EXPO_PUBLIC_` instead.)*
+
+2. **Better-Auth** — Configure providers in `lib/auth.ts`. Set `DATABASE_URL` env var.
+
+3. **WatermelonDB** *(mobile/universal only)* — Define your models in `model/` and update `model/database.ts` with `modelClasses`.
+
+---
+
+**Bootstrapped:** 2026-05-07
+**Source:** https://github.com/Soham407/Studio_Skills
