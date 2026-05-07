@@ -40,7 +40,7 @@ Every category is copied into a new scaffolded project under `.claude/skills/<ca
 
 ## Project Scaffold Flow
 
-`kickstart --web|--mobile|--universal <name>` runs eight steps:
+`kickstart` runs the same flow interactively when decisions are omitted. `kickstart --web|--mobile|--universal <name>` keeps the flow scriptable.
 
 1. Validate required tools.
 2. Create the framework project.

@@ -29,7 +29,15 @@ kickstart skills install tdd --agent codex
 kickstart skills install hue --agent gemini
 ```
 
-Create a new project:
+Create a new project with guided choices:
+
+```bash
+kickstart
+```
+
+The CLI asks for project type, project name, local model preference, and GitHub repo mode.
+
+For automation, pass the choices as flags:
 
 ```bash
 kickstart --web my-app --github skip
@@ -75,6 +83,7 @@ kickstart skills list --skills https://github.com/your-org/your-skills.git
 
 ```bash
 kickstart --init
+kickstart
 kickstart --web <name> [--github private|public|skip]
 kickstart --mobile <name> [--github private|public|skip]
 kickstart --universal <name> [--github private|public|skip]
@@ -89,6 +98,8 @@ kickstart skills install <skill> [--agent claude|codex|gemini|cursor|opencode|wi
 - GitHub CLI authenticated with `gh auth login` when using `--github private` or `--github public`
 - Docker-compatible runtime optional for container workloads: Docker Desktop, Docker Engine, Podman, or OrbStack
 - Local model runtime optional but recommended: Ollama, LM Studio, llama.cpp, Open WebUI, or a provider supported by your agent
+
+Local model support is optional. If a user selects "Do not assume local models", the generated `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` tell agents to use the active Claude Code, Codex, Gemini CLI, or other agent model instead.
 
 ## Similar Projects
 
