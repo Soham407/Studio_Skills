@@ -1,7 +1,7 @@
 {
   "name": "@studio-skills/kickstart",
   "version": "1.0.0",
-  "description": "Studio-Grade project bootstrapper with cross-agent skills",
+  "description": "Bootstrap new agent-ready apps with frameworks, tools, guardrails, and skills preconfigured",
   "bin": {
     "kickstart": "./bin/kickstart.js"
   },
@@ -25,16 +25,22 @@
   },
   "license": "MIT",
   "keywords": [
-    "claude",
-    "claude-code",
-    "codex",
-    "gemini-cli",
-    "skills",
-    "local-models",
+    "project-scaffolding",
+    "project-template",
     "bootstrap",
     "cli",
+    "developer-tools",
     "nextjs",
-    "expo"
+    "expo",
+    "solito",
+    "supabase",
+    "better-auth",
+    "watermelondb",
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "agent-skills",
+    "local-models"
   ],
   "files": [
     "bin/",

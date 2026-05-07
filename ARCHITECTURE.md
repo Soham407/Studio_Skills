@@ -1,11 +1,13 @@
 # Architecture
 
-Studio Skills has two parts:
+Studio Skills Kickstart has two parts:
 
-- The npm CLI package, published as `@studio-skills/kickstart`
-- The skills library, fetched at runtime from a Git repository
+- The npm CLI package, published as `@studio-skills/kickstart`, which bootstraps new projects
+- The skills library, fetched at runtime from a Git repository and injected into scaffolded projects
 
-Keeping skills out of the npm tarball keeps installs small and lets teams point `kickstart` at their own skills repo without forking the CLI.
+The CLI is the main product. The skills library is one layer of the project setup, alongside framework scaffolding, auth/database setup, quality gates, and agent docs.
+
+Keeping skills out of the npm tarball keeps installs small and lets teams point `kickstart` at their own skills repo without forking the bootstrapper.
 
 ## CLI Modules
 
@@ -55,7 +57,7 @@ The legacy `scripts/kickstart.sh` remains as a readable bash fallback.
 
 ## Skill Catalog Flow
 
-The generated `skills.json` file is the public discovery surface for humans, websites, and future installers.
+The generated `skills.json` file is the discovery surface for the skills layer.
 
 1. Walk `architecture/`, `coding/`, `business/`, and `design/`.
 2. Read each `SKILL.md` frontmatter.

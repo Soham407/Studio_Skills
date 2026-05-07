@@ -20,7 +20,7 @@ function cancelIfNeeded(value) {
 
 program
   .name('kickstart')
-  .description('Studio-Grade project bootstrapper with cross-agent skills')
+  .description('Bootstrap agent-ready apps with frameworks, tools, guardrails, and skills')
   .version(readPackageVersion())
   .option('--init', 'Run the first-time setup wizard')
   .option('--web', 'Scaffold a Next.js web project')
