@@ -57,6 +57,7 @@ Enterprise-grade TypeScript, Next.js, and Expo patterns ensuring code quality an
 | Skill | Purpose | Category | Source |
 |-------|---------|----------|--------|
 | **Matt Pocock TypeScript Architecture** | Advanced TypeScript patterns and type system mastery | coding | [mattpocock/skills](https://github.com/mattpocock/skills) |
+| **WatermelonDB Sync Architecture** | Offline-first React Native DB with conflict resolution and optimistic updates | coding | Custom Studio Skill (2026 WatermelonDB Docs) |
 | **Writing Standards** | Documentation and code comment best practices | architecture | [Anbeeld/WRITING.md](https://github.com/Anbeeld/WRITING.md) |
 | **Tech Debt Audit** | Identify, measure, and prioritize technical debt | architecture | [ksimback/tech-debt-skill](https://github.com/ksimback/tech-debt-skill) |
 | **Hue Design Tokens** | Tailwind and design token configuration system | design | [dominikmartn/hue](https://github.com/dominikmartn/hue) |
@@ -130,6 +131,7 @@ This pulls the latest version from each skill and distributes to all registered 
 
 ### Production Engineering (Coding)
 - `coding/matt-pocock-typescript/` — Advanced TypeScript
+- `coding/watermelon-sync/` — WatermelonDB offline-first architecture (custom skill)
 
 ### Design & UI
 - `design/hue-design-tokens/` — Design token systems
@@ -194,4 +196,5 @@ To add a new skill:
 ---
 
 **Last Updated:** 2026-05-07  
-**Total Skills:** 18 (9 Architecture, 1 Coding, 1 Design, 7 Business)
+**Total Skills:** 19 (9 Architecture, 2 Coding, 1 Design, 7 Business)  
+**Custom Studio Skills:** 1 (WatermelonDB Sync)
