@@ -18,7 +18,7 @@ In <2 minutes, `kickstart` builds a project that:
 ## Install
 
 ```bash
-# From the Studio_Skills repo root:
+# From the studio-kickstart repo root:
 sudo cp scripts/kickstart.sh /usr/local/bin/kickstart
 sudo chmod +x /usr/local/bin/kickstart
 
@@ -29,7 +29,7 @@ kickstart --help
 
 To update later:
 ```bash
-cd ~/projects/Studio_Skills
+cd ~/projects/studio-kickstart
 git pull
 sudo cp scripts/kickstart.sh /usr/local/bin/kickstart
 ```

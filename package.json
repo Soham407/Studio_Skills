@@ -17,11 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Soham407/Studio_Skills.git"
+    "url": "git+https://github.com/Soham407/studio-kickstart.git"
   },
-  "homepage": "https://github.com/Soham407/Studio_Skills#readme",
+  "homepage": "https://github.com/Soham407/studio-kickstart#readme",
   "bugs": {
-    "url": "https://github.com/Soham407/Studio_Skills/issues"
+    "url": "https://github.com/Soham407/studio-kickstart/issues"
   },
   "license": "MIT",
   "keywords": [

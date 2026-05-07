@@ -1,6 +1,6 @@
 # Architecture
 
-Studio Skills Kickstart has two parts:
+Studio Kickstart has two parts:
 
 - The npm CLI package, published as `@studio-skills/kickstart`, which bootstraps new projects
 - The skills library, fetched at runtime from a Git repository and injected into scaffolded projects

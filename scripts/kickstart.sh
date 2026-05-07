@@ -8,7 +8,7 @@
 #   --universal   Turborepo + Solito 5
 #
 # Optimized for: pnpm / Docker-compatible runtimes / local-model-friendly agents
-# Source: https://github.com/Soham407/Studio_Skills
+# Source: https://github.com/Soham407/studio-kickstart
 
 set -euo pipefail
 
@@ -23,7 +23,7 @@ CYAN=$'\033[0;36m'
 BOLD=$'\033[1m'
 NC=$'\033[0m'
 
-STUDIO_SKILLS_REPO="https://github.com/Soham407/Studio_Skills.git"
+STUDIO_SKILLS_REPO="https://github.com/Soham407/studio-kickstart.git"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATES_DIR="$SCRIPT_DIR/templates"
 TEMP_DIR=""

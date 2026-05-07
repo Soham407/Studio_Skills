@@ -1,4 +1,4 @@
-# Studio Skills Kickstart
+# Studio Kickstart
 
 One command to bootstrap a new serious app with the frameworks, tools, guardrails, agent docs, and reusable skills already wired in.
 
@@ -112,7 +112,7 @@ Compare the pieces with:
 - `obra/superpowers` for workflow-oriented agent skills
 - Aider, OpenCode, Gemini CLI, Cline, Roo Code, Continue, Cursor, and Windsurf for agent workflow expectations
 
-Studio Skills Kickstart should differentiate by combining project scaffolding, tool setup, agent docs, and reusable skills into one guided bootstrapper.
+Studio Kickstart should differentiate by combining project scaffolding, tool setup, agent docs, and reusable skills into one guided bootstrapper.
 
 ## Local Development
 
