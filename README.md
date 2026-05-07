@@ -1,103 +1,116 @@
 # Studio Skills Kickstart
 
-Bootstrap Studio-Grade Claude Code projects in 30 seconds.
+Studio Skills is an open-source skills library plus an npm CLI for bootstrapping agent-ready, local-model-friendly projects.
 
-`@studio-skills/kickstart` is an open-source npm CLI that creates production-ready Next.js, Expo, or universal Solito projects, injects 35+ Claude skills, and wires sensible guardrails for serious project work.
+Use the skills directly in an existing repo, or use `kickstart` to create a new Next.js, Expo, or Solito project with the skills and guardrails already installed.
 
-## Install
+## Quick Start
+
+Browse the library:
+
+```bash
+git clone https://github.com/Soham407/Studio_Skills.git
+cd Studio_Skills
+npm run skills:catalog
+```
+
+Install the CLI:
 
 ```bash
 npm install -g @studio-skills/kickstart
-```
-
-## First Run
-
-```bash
 kickstart --init
 ```
 
-The wizard checks your local tools, helps with GitHub CLI authentication, asks how each project should treat Ollama, and saves config to `~/.studio-skills/config.json`.
-
-## Create a Project
+Install one skill into an existing project:
 
 ```bash
-kickstart --web my-app
-kickstart --mobile my-mobile-app
-kickstart --universal my-platform
+kickstart skills install tdd
+kickstart skills install tdd --agent codex
+kickstart skills install hue --agent gemini
 ```
 
-Then:
+Create a new project:
 
 ```bash
-cd my-app
-pnpm dev
+kickstart --web my-app --github skip
+kickstart --mobile my-mobile-app --github private
+kickstart --universal my-platform --github public
 ```
 
 ## What You Get
 
-- Next.js web, Expo mobile, or Turborepo + Solito universal scaffold
-- Private GitHub repo creation through `gh`
-- Studio Skills injected into `.claude/skills/`
-- Supabase client setup
-- Better-Auth starter setup
-- WatermelonDB starter setup for mobile and universal projects
-- Husky, lint-staged, Vitest, Playwright, and Prettier
-- `CLAUDE.md` with project context and model routing guidance
-- Silent daily npm update checks
+- A curated skills library for architecture, coding, business, and design workflows
+- `skills.json`, a generated index of installable skills
+- A small npm CLI that fetches skills at runtime instead of bundling the whole library
+- Optional project scaffolds for Next.js, Expo, and Turborepo + Solito
+- Optional GitHub repo creation with `private`, `public`, or `skip` modes
+- Cross-agent skill install targets for Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Windsurf, Aider, Goose, and Pi-style local agents
+- Local model guidance that works with Ollama, LM Studio, llama.cpp, Open WebUI, or any local runtime exposed through your chosen agent
+- Container guidance for macOS, Windows, and Linux through Docker Desktop, Docker Engine, Podman, or OrbStack
+- Supabase, Better-Auth, WatermelonDB, Husky, lint-staged, Vitest, Playwright, and Prettier setup for scaffolded projects
 
 ## Skills Library
 
-The CLI fetches skills at runtime from this repository, or from your configured custom repo.
-
-```bash
-kickstart --skills https://github.com/Soham407/Studio_Skills.git --web custom-app
-```
-
 Skills are organized by domain:
 
-- `architecture/`: engineering workflows, diagnosis, TDD, planning, triage, architecture improvement
-- `coding/`: TypeScript, framework, and offline-first implementation patterns
-- `business/`: studio operations, security, SEO, demos, outreach
+- `architecture/`: diagnosis, TDD, planning, triage, architecture improvement, token discipline
+- `coding/`: TypeScript and offline-first implementation patterns
+- `business/`: studio operations, security, SEO, demos, outreach, presentations
 - `design/`: design tokens and UI system guidance
+
+List skills from the configured repo:
+
+```bash
+kickstart skills list
+```
+
+Use a fork or custom library for one command:
+
+```bash
+kickstart --skills https://github.com/your-org/your-skills.git --web custom-app
+kickstart skills list --skills https://github.com/your-org/your-skills.git
+```
+
+## CLI Reference
+
+```bash
+kickstart --init
+kickstart --web <name> [--github private|public|skip]
+kickstart --mobile <name> [--github private|public|skip]
+kickstart --universal <name> [--github private|public|skip]
+kickstart skills list
+kickstart skills install <skill> [--agent claude|codex|gemini|cursor|opencode|windsurf|aider|goose|pi]
+```
 
 ## Requirements
 
 - Node.js 20+
 - pnpm
-- GitHub CLI authenticated with `gh auth login`
-- OrbStack optional, recommended for Docker workloads
-- Ollama optional, useful for local routine coding tasks
+- GitHub CLI authenticated with `gh auth login` when using `--github private` or `--github public`
+- Docker-compatible runtime optional for container workloads: Docker Desktop, Docker Engine, Podman, or OrbStack
+- Local model runtime optional but recommended: Ollama, LM Studio, llama.cpp, Open WebUI, or a provider supported by your agent
 
-## Configuration
+## Similar Projects
 
-`kickstart --init` writes:
+Compare Studio Skills with:
 
-```json
-{
-  "skillsRepo": "https://github.com/Soham407/Studio_Skills.git",
-  "ollama": "ask",
-  "ollamaModel": "qwen2.5-coder:14b",
-  "version": "1.0.0"
-}
-```
+- `anthropics/skills`: official Agent Skills examples, spec, and template
+- `openai/skills`: Codex skills catalog
+- `obra/superpowers`: workflow-oriented engineering skills and methodology
+- `obra/superpowers-marketplace`: Claude Code plugin marketplace pattern
+- `jtianling/skills-manager`: multi-agent skill deployment
+- `Aider-AI/aider`, `opencode-ai/opencode`, `google-gemini/gemini-cli`, Cline, Roo Code, and Continue: useful references for local/BYOK agent workflows
 
-Use `--skills <url>` to override the configured skills repo for one project.
+Studio Skills should differentiate by being an opinionated studio workflow distribution: useful skills plus a practical project bootstrapper.
 
 ## Local Development
 
 ```bash
 npm install
-npm link
-kickstart --help
-kickstart --init
-```
-
-Package check:
-
-```bash
-npm pack
-npm install -g studio-skills-kickstart-1.0.0.tgz
-kickstart --version
+npm test
+npm run skills:lint
+npm run skills:catalog
+npm pack --dry-run
 ```
 
 ## Contributing

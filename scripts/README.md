@@ -6,13 +6,13 @@ A bootstrapper script that scaffolds production-ready Web, Mobile, and Universal
 
 In <2 minutes, `kickstart` builds a project that:
 
-1. ✅ Validates your environment (pnpm, gh, OrbStack, node ≥20, Ollama)
+1. ✅ Validates your environment (pnpm, gh, Docker-compatible runtime, node ≥20, local model runtime)
 2. ✅ Scaffolds Next.js 16 / Expo SDK 55 / Turborepo+Solito 5
 3. ✅ Creates a private GitHub repo and pushes initial commit
 4. ✅ Injects 35+ studio skills into `.claude/skills/`
 5. ✅ Installs and configures Supabase + Better-Auth (+ WatermelonDB for mobile)
 6. ✅ Wires Husky + lint-staged + Vitest + Playwright + Shannon-Pro hook
-7. ✅ Generates a `CLAUDE.md` with Ollama soft preference for routine tasks
+7. ✅ Generates agent docs with local-model soft preference for routine tasks
 8. ✅ Final commit and push
 
 ## Install
@@ -51,8 +51,8 @@ Project name must be **lowercase, alphanumeric, with hyphens** (no spaces, under
 | `pnpm` | Yes | `brew install pnpm` |
 | `gh` (authenticated) | Yes | `brew install gh && gh auth login` |
 | `node` ≥ 20 | Yes | `brew install node` |
-| `orb` (OrbStack) | Recommended | https://orbstack.dev |
-| `ollama` (with Qwen) | Recommended | `brew install ollama && ollama pull qwen2.5-coder:14b` |
+| Docker-compatible runtime | Recommended | Docker Desktop, Docker Engine, Podman, or OrbStack |
+| Local model runtime | Recommended | Ollama, LM Studio, llama.cpp, Open WebUI, or an agent-supported provider |
 
 ## What Gets Installed
 
@@ -61,8 +61,8 @@ Project name must be **lowercase, alphanumeric, with hyphens** (no spaces, under
 - Vitest (unit), Playwright (E2E)
 - Supabase JS client (`lib/supabase.ts`)
 - Better-Auth (`lib/auth.ts`)
-- All 35+ Studio Skills at `.claude/skills/`
-- `CLAUDE.md` with hardware context + Ollama directive
+- All Studio Skills at `.claude/skills/`
+- Agent docs with local-model guidance
 
 ### Mobile / Universal additions
 - Expo SDK 55
@@ -107,7 +107,7 @@ Add a `typecheck` script to `package.json` (the script attempts this automatical
 "scripts": { "typecheck": "tsc --noEmit" }
 ```
 
-### Ollama not picked up
+### Local model not picked up
 ```bash
 ollama pull qwen2.5-coder:14b
 ollama list
@@ -120,7 +120,7 @@ scripts/
 ├── kickstart.sh                     Main bootstrapper
 ├── README.md                        This file
 └── templates/
-    ├── CLAUDE.md.template           Injected as CLAUDE.md in new projects
+    ├── CLAUDE.md.template           Legacy agent-doc template
     └── pre-commit.template          Husky pre-commit hook
 ```
 
@@ -138,7 +138,7 @@ kickstart --universal kt-test-universal
 for p in kt-test-web kt-test-mobile kt-test-universal; do
   echo "=== $p ==="
   ls "$p/.claude/skills/"
-  test -f "$p/CLAUDE.md" && echo "✓ CLAUDE.md"
+  test -f "$p/AGENTS.md" && echo "✓ AGENTS.md"
   test -f "$p/.husky/pre-commit" && echo "✓ pre-commit"
 done
 

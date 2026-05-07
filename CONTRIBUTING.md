@@ -16,16 +16,21 @@ Use `.github/skills/SKILL_TEMPLATE.md` as the starting point when creating a new
 
 - `SKILL.md` exists and explains when to use the skill.
 - The skill has a narrow purpose and does not duplicate an existing skill.
+- Frontmatter includes lowercase kebab-case `name` and a clear `description`.
+- The folder lives in the category that matches the work it supports.
 - Extra references are loaded progressively instead of requiring the agent to read everything upfront.
 - Scripts are executable where needed and documented in the skill.
 - The category matches the work the skill supports.
+- Run `npm run skills:lint` before opening a PR.
+- Run `npm run skills:catalog` after adding, removing, or renaming a skill.
 
 ## CLI Checklist
 
 - Keep new dependencies small and justified.
 - Preserve `scripts/kickstart.sh` as the bash fallback.
 - Do not package the full skills library into npm; skills are fetched at runtime.
-- Test `kickstart --help`, `kickstart --version`, and `npm pack` before opening a PR.
+- Keep scaffold defaults friendly to open-source users. GitHub repo creation must remain skippable.
+- Test `kickstart --help`, `kickstart --version`, `npm test`, and `npm pack --dry-run` before opening a PR.
 
 ## Pull Requests
 
@@ -35,6 +40,7 @@ Open a PR with:
 - Files changed and why.
 - Manual verification steps.
 - Screenshots or terminal output when CLI UX changes.
+- Any compatibility notes for Claude Code, Codex, Cursor, Gemini, or OpenCode.
 
 ## Code of Conduct
 

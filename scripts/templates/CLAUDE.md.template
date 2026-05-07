@@ -4,19 +4,17 @@ Studio-Grade **{{PROJECT_TYPE}}** project bootstrapped via `kickstart`.
 
 ---
 
-## Hardware & Runtime Context
+## Runtime Context
 
-- **CPU/Memory:** Apple M5 Pro Silicon / 24GB Unified Memory
 - **Package Manager:** pnpm (content-addressable storage)
-- **Terminal:** Warp (block-compatible non-interactive outputs)
-- **Virtualization:** OrbStack (native Docker replacement)
-- **Local Inference:** Ollama serving Qwen 3.6 Coder 14B/32B
+- **Containers:** Docker Desktop, Docker Engine, Podman, or OrbStack
+- **Local Inference:** Ollama, LM Studio, llama.cpp, Open WebUI, or an agent-supported local provider
 
-## AI Model Routing (Soft Preference)
+## Agent And Model Routing
 
-> **Prefer local Ollama (Qwen 3.6 Coder 14B) for routine tasks** — file edits, simple refactors, lookups, and code formatting — to preserve the 24GB RAM headroom.
+> **Prefer local models for routine tasks** — file edits, simple refactors, lookups, and code formatting.
 >
-> **Use cloud Claude** for:
+> **Use the strongest available model** for:
 > - Complex architectural decisions
 > - Multi-file refactors spanning 3+ modules
 > - Domain modeling and PRD synthesis
@@ -49,7 +47,12 @@ Studio-Grade **{{PROJECT_TYPE}}** project bootstrapped via `kickstart`.
 
 ## Skills Library
 
-This project ships with **35+ studio skills** at `.claude/skills/`:
+This project ships with studio skills at `.claude/skills/` by default. Install individual skills for other agents with:
+
+```bash
+kickstart skills install <skill> --agent codex
+kickstart skills install <skill> --agent gemini
+```
 
 ### `architecture/`
 Engineering frameworks and processes:

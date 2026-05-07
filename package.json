@@ -1,13 +1,19 @@
 {
   "name": "@studio-skills/kickstart",
   "version": "1.0.0",
-  "description": "Studio-Grade project bootstrapper with 35+ Claude skills",
+  "description": "Studio-Grade project bootstrapper with cross-agent skills",
   "bin": {
     "kickstart": "./bin/kickstart.js"
   },
   "type": "module",
   "engines": {
     "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "skills:lint": "node scripts/lint-skills.js",
+    "skills:catalog": "node scripts/generate-skills-catalog.js",
+    "check": "npm run skills:lint && npm test && npm pack --dry-run"
   },
   "repository": {
     "type": "git",
@@ -21,7 +27,10 @@
   "keywords": [
     "claude",
     "claude-code",
+    "codex",
+    "gemini-cli",
     "skills",
+    "local-models",
     "bootstrap",
     "cli",
     "nextjs",
@@ -30,9 +39,12 @@
   "files": [
     "bin/",
     "lib/",
+    "skills.json",
     "README.md",
     "ARCHITECTURE.md",
     "CONTRIBUTING.md",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md",
     "LICENSE"
   ],
   "dependencies": {

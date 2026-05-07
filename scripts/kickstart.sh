@@ -7,7 +7,7 @@
 #   --mobile      Expo SDK 55 with WatermelonDB
 #   --universal   Turborepo + Solito 5
 #
-# Optimized for: Apple M5 Pro / 24GB RAM / pnpm / OrbStack / Warp
+# Optimized for: pnpm / Docker-compatible runtimes / local-model-friendly agents
 # Source: https://github.com/Soham407/Studio_Skills
 
 set -euo pipefail
@@ -56,7 +56,7 @@ ${BOLD}EXAMPLES:${NC}
   kickstart --universal my-platform
 
 ${BOLD}REQUIREMENTS:${NC}
-  pnpm, gh (authenticated), orb (OrbStack), node ≥ 20
+  pnpm, gh (authenticated), Docker-compatible runtime optional, node ≥ 20
 
 EOF
 }
@@ -90,10 +90,10 @@ validate_environment() {
     log_success "gh authenticated"
   fi
 
-  if ! command -v orb &>/dev/null; then
-    log_warn "orb not found (OrbStack recommended for Docker workloads)"
+  if ! command -v docker &>/dev/null; then
+    log_warn "docker not found (install Docker Desktop, Docker Engine, Podman, or OrbStack for container workloads)"
   else
-    log_success "OrbStack present"
+    log_success "docker-compatible runtime present"
   fi
 
   if ! command -v node &>/dev/null; then
@@ -115,7 +115,7 @@ validate_environment() {
       log_warn "Ollama installed but no Qwen model. Run: ollama pull qwen2.5-coder:14b"
     fi
   else
-    log_warn "Ollama not found (optional but recommended)"
+    log_warn "Ollama not found (optional; LM Studio, llama.cpp, Open WebUI, or agent-native local providers also work)"
   fi
 
   if [ ${#missing[@]} -gt 0 ]; then
@@ -379,35 +379,38 @@ EOF
 }
 
 # ============================================================================
-# Step 7: CLAUDE.md Injection
+# Step 7: Agent docs injection
 # ============================================================================
 inject_claude_md() {
-  log_step "Step 7/8: Writing CLAUDE.md"
+  log_step "Step 7/8: Writing agent docs"
 
   if [ -f "$TEMPLATES_DIR/CLAUDE.md.template" ]; then
-    cp "$TEMPLATES_DIR/CLAUDE.md.template" CLAUDE.md
+    cp "$TEMPLATES_DIR/CLAUDE.md.template" AGENTS.md
     if [ "$(uname)" = "Darwin" ]; then
-      sed -i '' "s/{{PROJECT_NAME}}/$PROJECT_NAME/g; s/{{PROJECT_TYPE}}/$TYPE/g" CLAUDE.md
+      sed -i '' "s/{{PROJECT_NAME}}/$PROJECT_NAME/g; s/{{PROJECT_TYPE}}/$TYPE/g" AGENTS.md
     else
-      sed -i "s/{{PROJECT_NAME}}/$PROJECT_NAME/g; s/{{PROJECT_TYPE}}/$TYPE/g" CLAUDE.md
+      sed -i "s/{{PROJECT_NAME}}/$PROJECT_NAME/g; s/{{PROJECT_TYPE}}/$TYPE/g" AGENTS.md
     fi
   else
-    cat > CLAUDE.md <<EOF
+    cat > AGENTS.md <<EOF
 # $PROJECT_NAME
 
 Studio-Grade $TYPE project. Bootstrapped via kickstart.
 
-## Hardware Context
-- Apple M5 Pro / 24GB RAM
-- Prefer local Ollama (Qwen 3.6 Coder 14B) for routine tasks.
-- Use cloud Claude for complex architectural work.
+## Agent And Model Routing
+- Prefer local models for routine tasks.
+- Use the strongest available model for complex architectural work.
+- Container workloads can use Docker Desktop, Docker Engine, Podman, or OrbStack.
 
 ## Skills Library
-See \`.claude/skills/\` for 35+ studio skills (architecture, coding, business, design).
+See \`.claude/skills/\` for studio skills. Install individual skills for other agents with \`kickstart skills install <skill> --agent <agent>\`.
 EOF
   fi
 
-  log_success "CLAUDE.md created"
+  cp AGENTS.md CLAUDE.md
+  cp AGENTS.md GEMINI.md
+
+  log_success "AGENTS.md, CLAUDE.md, and GEMINI.md created"
 }
 
 # ============================================================================
