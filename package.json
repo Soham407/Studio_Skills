@@ -1,0 +1,44 @@
+{
+  "name": "@studio-skills/kickstart",
+  "version": "1.0.0",
+  "description": "Studio-Grade project bootstrapper with 35+ Claude skills",
+  "bin": {
+    "kickstart": "./bin/kickstart.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soham407/Studio_Skills.git"
+  },
+  "homepage": "https://github.com/Soham407/Studio_Skills#readme",
+  "bugs": {
+    "url": "https://github.com/Soham407/Studio_Skills/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skills",
+    "bootstrap",
+    "cli",
+    "nextjs",
+    "expo"
+  ],
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "ARCHITECTURE.md",
+    "CONTRIBUTING.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@clack/prompts": "^0.8.2",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "execa": "^9.6.0"
+  }
+}

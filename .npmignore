@@ -1,0 +1,9 @@
+architecture/
+business/
+coding/
+design/
+scripts/
+.github/
+sync-script.sh
+.DS_Store
+*.tgz
