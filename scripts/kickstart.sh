@@ -23,7 +23,7 @@ CYAN=$'\033[0;36m'
 BOLD=$'\033[1m'
 NC=$'\033[0m'
 
-STUDIO_SKILLS_REPO="https://github.com/Soham407/studio-kickstart.git"
+STUDIO_SKILLS_REPO="https://github.com/soham407/studio_skills.git"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATES_DIR="$SCRIPT_DIR/templates"
 TEMP_DIR=""
@@ -223,6 +223,8 @@ install_database_and_auth() {
   log_info "Adding Supabase..."
   pnpm add @supabase/supabase-js
   mkdir -p lib
+  mkdir -p .design-staging
+  touch .design-staging/.gitkeep
   cat > lib/supabase.ts <<'EOF'
 import { createClient } from '@supabase/supabase-js'
 
@@ -338,8 +340,8 @@ EOF
 setup_guardrails() {
   log_step "Step 6/8: Installing production guardrails"
 
-  log_info "Adding Husky + lint-staged + Vitest + Playwright..."
-  pnpm add -D husky lint-staged vitest @playwright/test prettier
+  log_info "Adding Husky + lint-staged + Vitest + Playwright + Sandcastle..."
+  pnpm add -D husky lint-staged vitest @playwright/test prettier @ai-hero/sandcastle
 
   pnpm dlx husky init >/dev/null 2>&1 || true
 

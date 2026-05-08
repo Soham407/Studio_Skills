@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07T12:48:19.703Z",
+  "generatedAt": "2026-05-08T05:35:18.541Z",
   "skills": [
     {
       "name": "antivibe",
@@ -10,6 +10,19 @@
       "tags": "",
       "path": "architecture/antivibe-logic/SKILL.md",
       "readme": "architecture/antivibe-logic/README.md",
+      "supportedAgents": [
+        "claude"
+      ]
+    },
+    {
+      "name": "claude-plugin-powerpack",
+      "slug": "claude-plugin-powerpack",
+      "category": "architecture",
+      "type": "workflow",
+      "description": "Installs and documents the recommended Claude Code plugin stack for a high-leverage open-source agent setup. Use when setting up Claude plugins, when the user mentions skill-creator, superpowers, context-mode, claude-mem, frontend-design, get-shit-done-cc, or asks for the Studio Claude plugin pack.",
+      "tags": "[claude-code, plugins, superpowers, memory, context, frontend]",
+      "path": "architecture/claude-plugin-powerpack/SKILL.md",
+      "readme": null,
       "supportedAgents": [
         "claude"
       ]
@@ -286,6 +299,19 @@
       "supportedAgents": [
         "claude",
         "cursor"
+      ]
+    },
+    {
+      "name": "artifact-pro-open-design",
+      "slug": "artifact-pro-open-design",
+      "category": "design",
+      "type": "workflow",
+      "description": "Converts Open Design JSON exports into production UI implemented with NativeWind v4. Use when the user provides an Open Design JSON export, mentions Artifact-Pro, asks to bridge Open Design into a codebase, or wants design JSON converted into React, React Native, Expo, Next.js, or Solito components.",
+      "tags": "[open-design, artifact-pro, nativewind, react-native, ui]",
+      "path": "design/artifact-pro-open-design/SKILL.md",
+      "readme": null,
+      "supportedAgents": [
+        "claude"
       ]
     },
     {
